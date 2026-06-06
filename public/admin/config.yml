@@ -1,0 +1,25 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "article"
+    label: "Articles"
+    folder: "content/articles"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Category", name: "cat", widget: "select", options: ["राष्ट्रीय", "झारखंड", "राजनीति", "तकनीक", "कृषि", "स्वास्थ्य", "शिक्षा", "खेल", "विचार", "मनोरंजन"]}
+      - {label: "Author", name: "author", widget: "string", default: "Admin"}
+      - {label: "Featured Image URL", name: "img", widget: "string"}
+      - {label: "Summary", name: "summary", widget: "text"}
+      - {label: "Reading Time (minutes)", name: "rt", widget: "number", default: 3}
+      - {label: "Is Breaking News?", name: "breaking", widget: "boolean", default: false, required: false}
+      - {label: "Is Featured? (Hero Section)", name: "feat", widget: "boolean", default: false, required: false}
+      - {label: "Editor's Pick?", name: "pick", widget: "boolean", default: false, required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
