@@ -19,7 +19,8 @@ export async function generateStaticParams() {
 }
 
 export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+  const { slug: rawSlug } = await params;
+  const slug = decodeURIComponent(rawSlug);
   const hindiCat = categoryMap[slug] || slug;
   const arts = getAllArticles().filter(a => a.cat === hindiCat);
 
